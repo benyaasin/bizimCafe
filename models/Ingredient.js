@@ -6,7 +6,20 @@ class Ingredient {
   }
 
   static getAll(filters = {}) {
-    return knex('ingredients').where(filters).whereNull('deleted_at');
+    const query = knex('ingredients');
+
+    // Silinmiş malzemeler için filtreleme
+    if (filters.showDeleted === 'true') {
+      // Silinmiş olanlar dahil tüm malzemeleri getir
+    } else if (filters.onlyDeleted === 'true') {
+      // Sadece silinmiş malzemeleri getir
+      query.whereNotNull('deleted_at');
+    } else {
+      // Silinmemiş malzemeleri getir
+      query.whereNull('deleted_at');
+    }
+
+    return query;
   }
 
   static getById(id) {

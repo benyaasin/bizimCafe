@@ -14,3 +14,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTable('categories');
 }; 
+if (filters.isAllergen) {
+  query.where('is_allergen', filters.isAllergen === 'true' ? 1 : 0);
+} 

@@ -6,7 +6,19 @@ class Category {
   }
 
   static getAll(filters = {}) {
-    return knex('categories').where(filters).whereNull('deleted_at');
+    const query = knex('categories');
+
+    if (filters.showDeleted === 'true') {
+      // Silinmiş olanlar dahil tüm kategorileri getir
+    } else if (filters.onlyDeleted === 'true') {
+      // Sadece silinmiş kategorileri getir
+      query.whereNotNull('deleted_at');
+    } else {
+      // Silinmemiş kategorileri getir
+      query.whereNull('deleted_at');
+    }
+
+    return query;
   }
 
   static getById(id) {

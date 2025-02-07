@@ -6,7 +6,25 @@ class Product {
   }
 
   static getAll(filters = {}) {
-    return knex('products').where(filters).whereNull('deleted_at');
+    const query = knex('products');
+
+    // Kategori filtresi
+    if (filters.category) {
+      query.where('category_id', filters.category);
+    }
+
+    // Silinmiş ürünler için filtreleme
+    if (filters.showDeleted === 'true') {
+      // Silinmiş olanlar dahil tüm ürünleri getir
+    } else if (filters.onlyDeleted === 'true') {
+      // Sadece silinmiş ürünleri getir
+      query.whereNotNull('deleted_at');
+    } else {
+      // Silinmemiş ürünleri getir
+      query.whereNull('deleted_at');
+    }
+
+    return query;
   }
 
   static getById(id) {
