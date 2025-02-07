@@ -1,0 +1,233 @@
+{
+  "info": {
+    "name": "Bizim Cafe API",
+    "description": "Bizim Cafe için REST API koleksiyonu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/categories",
+            "description": "Tüm kategorileri listele"
+          }
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/categories/1",
+            "description": "ID'ye göre kategori getir"
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/categories",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Sıcak İçecekler\"\n}"
+            },
+            "description": "Yeni kategori oluştur"
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/categories/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Soğuk İçecekler\"\n}"
+            },
+            "description": "Kategori güncelle"
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/categories/1",
+            "description": "Kategori sil (soft delete)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/products",
+            "description": "Tüm ürünleri listele"
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/products/1",
+            "description": "ID'ye göre ürün getir"
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/products",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Türk Kahvesi\",\n    \"description\": \"Geleneksel Türk Kahvesi\",\n    \"category_id\": 1,\n    \"price\": 25.00\n}"
+            },
+            "description": "Yeni ürün oluştur"
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/products/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Filtre Kahve\",\n    \"price\": 30.00\n}"
+            },
+            "description": "Ürün güncelle"
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/products/1",
+            "description": "Ürün sil (soft delete)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ingredients",
+      "item": [
+        {
+          "name": "Get All Ingredients",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/ingredients",
+            "description": "Tüm malzemeleri listele"
+          }
+        },
+        {
+          "name": "Get Ingredient by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/ingredients/1",
+            "description": "ID'ye göre malzeme getir"
+          }
+        },
+        {
+          "name": "Create Ingredient",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/ingredients",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Kahve\"\n}"
+            },
+            "description": "Yeni malzeme oluştur"
+          }
+        },
+        {
+          "name": "Update Ingredient",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/ingredients/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Süt\"\n}"
+            },
+            "description": "Malzeme güncelle"
+          }
+        },
+        {
+          "name": "Delete Ingredient",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/ingredients/1",
+            "description": "Malzeme sil (soft delete)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product Ingredients",
+      "item": [
+        {
+          "name": "Get Product Ingredients",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/products/1/ingredients",
+            "description": "Bir ürünün malzemelerini listele"
+          }
+        },
+        {
+          "name": "Add Ingredient to Product",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/products/1/ingredients/1",
+            "description": "Ürüne malzeme ekle"
+          }
+        },
+        {
+          "name": "Remove Ingredient from Product",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/products/1/ingredients/1",
+            "description": "Üründen malzeme çıkar"
+          }
+        }
+      ]
+    }
+  ]
+} 
